@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "921123532708",
+    "firebase_url": "https://to-do-128.firebaseio.com",
+    "project_id": "to-do-128",
+    "storage_bucket": "to-do-128.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921123532708:android:8aa9bbc65c57d704a8db31",
+        "android_client_info": {
+          "package_name": "com.ashish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921123532708-ba65js6sab5po782cj7rvk036rqlp02d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkEEheBpFOBGneojxVYE8ZqzOYJwsfAIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921123532708-ba65js6sab5po782cj7rvk036rqlp02d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
