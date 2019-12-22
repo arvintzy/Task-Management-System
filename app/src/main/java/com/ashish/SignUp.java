@@ -14,6 +14,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,12 +38,14 @@ public class SignUp extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
+    DatabaseReference databaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
         firebaseAuth=FirebaseAuth.getInstance();
+        databaseUser= FirebaseDatabase.getInstance().getReference("");
         progressDialog=new ProgressDialog(this);
     }
 
@@ -71,6 +76,9 @@ public class SignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
+                    FirebaseUser currentUser=firebaseAuth.getCurrentUser();
+                    String uid=currentUser.getUid();
+                    databaseUser.child(uid);
                     Toast.makeText(SignUp.this,"user is registered",Toast.LENGTH_SHORT).show();
                 }else {
 
