@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class UserInfo implements Serializable
 {
     String userName="",userEmail="",mobileNo="";
+    int temp_val;
     public UserInfo (){
 
     }
