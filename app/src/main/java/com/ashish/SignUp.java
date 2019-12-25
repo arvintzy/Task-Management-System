@@ -45,7 +45,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
         firebaseAuth=FirebaseAuth.getInstance();
-        databaseUser= FirebaseDatabase.getInstance().getReference("");
+        databaseUser= FirebaseDatabase.getInstance().getReference("USERS");
         progressDialog=new ProgressDialog(this);
     }
 
@@ -74,11 +74,23 @@ public class SignUp extends AppCompatActivity {
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                progressDialog.dismiss();
+
                 if(task.isSuccessful()){
                     FirebaseUser currentUser=firebaseAuth.getCurrentUser();
                     String uid=currentUser.getUid();
-                    databaseUser.child(uid);
+                    UserInfo userinfo=new UserInfo(name,email,"");
+
+
+                    databaseUser.child(uid).setValue(userinfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressDialog.dismiss();
+                            if(task.isSuccessful()){
+                                Toast.makeText(SignUp.this,"User is registered Successfully",Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                    });
                     Toast.makeText(SignUp.this,"user is registered",Toast.LENGTH_SHORT).show();
                 }else {
 
