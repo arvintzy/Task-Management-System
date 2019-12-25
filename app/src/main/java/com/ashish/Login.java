@@ -2,9 +2,7 @@ package com.ashish;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +38,8 @@ public class Login extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     @BindView(R.id.tv_forget_pass)
     TextView tvForgetPass;
+    @BindView(R.id.tv_otp_login)
+    TextView tvOtpLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,26 +51,26 @@ public class Login extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.login_btn, R.id.text_sign_up,R.id.tv_forget_pass})
+    @OnClick({R.id.login_btn, R.id.text_sign_up, R.id.tv_forget_pass,R.id.tv_otp_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_forget_pass:
-                String emailId=emailEditText.getText().toString();
-                if(!emailId.equalsIgnoreCase("")){
+                String emailId = emailEditText.getText().toString();
+                if (!emailId.equalsIgnoreCase("")) {
                     firebaseAuth.sendPasswordResetEmail(emailId).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(Login.this,"Please check your email for resetting password",Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Login.this, "Please check your email for resetting password", Toast.LENGTH_SHORT).show();
 
-                            }else {
-                                Toast.makeText(Login.this,"Error resending password",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Login.this, "Error resending password", Toast.LENGTH_SHORT).show();
 
                             }
                         }
                     });
-                }else {
-                    Toast.makeText(this,"Please enter valid email",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Please enter valid email", Toast.LENGTH_SHORT).show();
 
                 }
                 break;
@@ -92,6 +92,13 @@ public class Login extends AppCompatActivity {
                 Intent intentSignUp = new Intent(Login.this, SignUp.class);
                 startActivity(intentSignUp);
                 break;
+
+            case R.id.tv_otp_login:
+                Intent intentOtp=new Intent(Login.this,OtpLogin.class);
+                startActivity(intentOtp);
+                finish();
+                break;
+
 
         }
     }
@@ -118,7 +125,5 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    @OnClick(R.id.tv_forget_pass)
-    public void onViewClicked() {
-    }
+
 }
