@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
     <androidx.appcompat.widget.Toolbar
@@ -16,7 +17,30 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/text_home_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="Start Creating notes with fireNote"
+        />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_note"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="20dp"
+            android:background="@drawable/fab"
+            android:backgroundTint="#eb4d55"
+            android:backgroundTintMode="add"
+            android:src="@drawable/ic_action_name"
+            android:tint="#ff0000"
+
+            app:fabSize="auto"
+            app:rippleColor="@android:color/holo_red_light" />
     </FrameLayout>
 
 

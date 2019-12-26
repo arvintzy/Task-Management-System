@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Add_notes">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar_add"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center"
+        >
+
+
+
+
+        <EditText
+            android:id="@+id/editText_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Note title"
+            android:textSize="15sp"
+            android:textColorHint="@color/hint_color"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:inputType="textPersonName"
+             />
+        <EditText
+            android:id="@+id/editText_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:hint="Note Description"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/hint_color"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:inputType="textPersonName"
+            />
+
+        <Button
+            android:id="@+id/button_save_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@drawable/background_button"
+            android:text="Save Note"
+            android:textSize="18sp"
+            android:layout_marginTop="25dp"/>
+    </LinearLayout>
+</LinearLayout>
