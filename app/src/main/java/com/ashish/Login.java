@@ -1,7 +1,9 @@
 package com.ashish;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,12 +43,18 @@ public class Login extends AppCompatActivity {
     TextView tvForgetPass;
     @BindView(R.id.tv_otp_login)
     TextView tvOtpLogin;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        sharedPreferences= getSharedPreferences("FIRENOTEDATA", Context.MODE_PRIVATE);
+        editor=sharedPreferences.edit();
+
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
@@ -111,12 +120,16 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
-
+                    editor.putBoolean("LOGINSTATUS",true);
+                    editor.commit();
                     Toast.makeText(Login.this, "Logged in successfullt", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
+                    editor.putBoolean("LOGINSTATUS",false);
+                    editor.commit();
+
                     String errorMsg = task.getException().getMessage();
                     Toast.makeText(Login.this, "" + errorMsg, Toast.LENGTH_SHORT).show();
 

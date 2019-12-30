@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".Add_notes">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool_bar_add"
+        android:id="@+id/tool_bar_add_note"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

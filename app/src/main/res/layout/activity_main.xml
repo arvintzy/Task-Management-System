@@ -34,13 +34,11 @@
             android:layout_gravity="bottom|right"
             android:layout_margin="20dp"
             android:background="@drawable/fab"
-            android:backgroundTint="#eb4d55"
-            android:backgroundTintMode="add"
             android:src="@drawable/ic_action_name"
-            android:tint="#ff0000"
 
-            app:fabSize="auto"
-            app:rippleColor="@android:color/holo_red_light" />
+
+
+            />
     </FrameLayout>
 
 

@@ -1,7 +1,9 @@
 package com.ashish;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -14,7 +16,7 @@ import butterknife.OnClick;
 
 public class Add_notes extends AppCompatActivity {
 
-    @BindView(R.id.tool_bar_add)
+    @BindView(R.id.tool_bar_add_note)
     Toolbar toolBarAdd;
     @BindView(R.id.editText_title)
     EditText editTextTitle;
@@ -30,10 +32,21 @@ public class Add_notes extends AppCompatActivity {
         ButterKnife.bind(this);
         toolBarAdd.setTitle("Add Note");
         toolBarAdd.setTitleTextColor(Color.WHITE);
+        toolBarAdd.setNavigationIcon(R.drawable.back_arrow);
+
+        toolBarAdd.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Add_notes.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
     @OnClick(R.id.button_save_note)
     public void onViewClicked() {
+
     }
 }
