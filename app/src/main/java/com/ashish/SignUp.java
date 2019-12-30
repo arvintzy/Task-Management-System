@@ -1,7 +1,9 @@
 package com.ashish;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,11 +44,17 @@ public class SignUp extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
     DatabaseReference databaseUser;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
+        sharedPreferences= getSharedPreferences("FIRENOTEDATA", Context.MODE_PRIVATE);
+        editor=sharedPreferences.edit();
         firebaseAuth=FirebaseAuth.getInstance();
         databaseUser= FirebaseDatabase.getInstance().getReference("USERS");
         progressDialog=new ProgressDialog(this);
@@ -76,6 +84,7 @@ public class SignUp extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
 
                             if(task.isSuccessful()){
+                                editor.putString("UID",uid);
                                 Toast.makeText(SignUp.this,"User is registered successfully",Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(SignUp.this,MainActivity.class);
                                 startActivity(intent);
@@ -121,6 +130,8 @@ public class SignUp extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         progressDialog.dismiss();
                                         if(task.isSuccessful()){
+                                            editor.putString("UID",uid);
+                                            editor.commit();
                                             Toast.makeText(SignUp.this,"User is registered Successfully",Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
