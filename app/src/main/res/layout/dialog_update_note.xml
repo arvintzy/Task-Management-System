@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:layout_margin="20dp"
+    android:gravity="center"
+    >
+
+    <EditText
+        android:id="@+id/editText_update_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Note title"
+        android:textSize="15sp"
+        android:textColorHint="@color/hint_color"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        />
+    <EditText
+        android:id="@+id/editText_update_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Note Description"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_color"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:inputType="textPersonName"
+        />
+
+    <Button
+        android:id="@+id/button_update_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@drawable/background_button"
+        android:text="Update note"
+        android:textSize="18sp"
+        android:layout_marginTop="25dp"/>
+</LinearLayout>

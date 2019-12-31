@@ -17,6 +17,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_all_notes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
     <TextView
         android:id="@+id/text_home_no_data"
         android:layout_width="wrap_content"
@@ -24,6 +30,7 @@
         android:layout_gravity="center"
         android:textSize="18sp"
         android:textColor="@color/black"
+        android:visibility="gone"
         android:text="Start Creating notes with fireNote"
         />
 

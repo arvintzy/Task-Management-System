@@ -5,6 +5,9 @@ import java.io.Serializable;
 public class UserNotes implements Serializable {
     String noteTitle="",noteDes="",noteDate="",noteId="";
 
+    public UserNotes(){
+
+    }
     public UserNotes(String noteTitle, String noteDes, String noteDate, String noteId) {
         this.noteTitle = noteTitle;
         this.noteDes = noteDes;
