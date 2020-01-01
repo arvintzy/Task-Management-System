@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements  UpdateInterface 
 
 
         allNotesList.clear();
+
         progressDialog.show();
 
         databaseNotes.addListenerForSingleValueEvent(new ValueEventListener() {
