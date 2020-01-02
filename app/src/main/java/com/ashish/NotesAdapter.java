@@ -48,7 +48,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
         String desc=userNotes.getNoteDes();
         String date=userNotes.getNoteDate();
 
-        holder.textRowDate.setText(title);
+        holder.textRowTitle.setText(title);
         holder.textRowDescription.setText(desc);
         holder.textRowDate.setText(date);
 
