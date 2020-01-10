@@ -127,4 +127,17 @@ public class MainActivity extends AppCompatActivity implements  UpdateInterface 
         });
         
     }
+
+    @Override
+    public void deleteNote(UserNotes userNotes) {
+        databaseNotes.child(userNotes.getNoteId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Note Deleted successfully", Toast.LENGTH_SHORT).show();
+                    readAllNotes();
+                }
+            }
+        });
+    }
 }

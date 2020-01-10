@@ -61,6 +61,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
                 showDialog(userNotes1);
             }
         });
+        holder.imageRowDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserNotes userNotes1=dataList.get(position);
+
+                confirmDeleteDialog(userNotes1);
+            }
+        });
     }
 
     @Override
@@ -88,12 +96,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
     public void showDialog(UserNotes notesObj){
 
 
-        Dialog dialog=new Dialog(context);
+        final Dialog dialog=new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_update_note);
         dialog.show();
-        EditText editTitle=(EditText)dialog.findViewById(R.id.editText_update_title);
-        EditText editDesc=(EditText)dialog.findViewById(R.id.editText_update_description);
+        final EditText editTitle=(EditText)dialog.findViewById(R.id.editText_update_title);
+        final EditText editDesc=(EditText)dialog.findViewById(R.id.editText_update_description);
 
         editTitle.setText(notesObj.getNoteTitle());
         editDesc.setText(notesObj.getNoteDes());
@@ -115,6 +123,27 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
 
                 UserNotes userNotes=new UserNotes(title,desc,noteDate,noteId);
                 updateInterface.updateUserNote(userNotes);
+            }
+        });
+    }
+    public void confirmDeleteDialog(UserNotes notes){
+        final Dialog dialog=new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_delete);
+        dialog.show();
+        TextView tvDelete=dialog.findViewById(R.id.text_delete);
+        TextView tvCancel=dialog.findViewById(R.id.text_cancel);
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        tvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                updateInterface.deleteNote(notes);
             }
         });
     }
