@@ -14,7 +14,7 @@
        >
         <activity android:name=".Add_notes" android:theme="@style/AppTheme_Noaction_bar"></activity>
         <activity android:name=".OtpLogin" android:theme="@style/AppTheme_Noaction_bar" />
-        <activity android:name=".SignUp" />
+       <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity
             android:name=".SplashScreen"
